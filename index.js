@@ -15,6 +15,10 @@ app.use(cors());
 //database setup
 mongoose.connect(process.env.DATABASE).then(() => { console.log('DB connection succesfull') } );
 
+//routes setup
+app.use('/api/quotes', require('./routes/quotes'));
+
+//listening app
 app.listen(port, () => {
     console.log(`App is listening at port ${port}`);
 })
