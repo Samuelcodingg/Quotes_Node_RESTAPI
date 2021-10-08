@@ -50,3 +50,16 @@ exports.updateQuote = async (req, res) => {
         })
     }
 }
+
+exports.deleteQuote = async (req, res) => {
+    try {
+        const quoteFounded = await quote.findById(req.params.id);
+        quoteFounded.remove();
+        res.send({data: quoteFounded});
+    }
+    catch {
+        return res.status(404).json({
+            error: 'There is not a quote with that ID'
+        })
+    }
+}
