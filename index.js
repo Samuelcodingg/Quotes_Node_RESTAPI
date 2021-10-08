@@ -4,5 +4,5 @@ const app = express();
 const port = process.env.PORT;
 
 app.listen(port, () => {
-    console.log('Hello world! this will be an amazing REST API ;)');
+    console.log(`App is listening at port ${port}`);
 })
