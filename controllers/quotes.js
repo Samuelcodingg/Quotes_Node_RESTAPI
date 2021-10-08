@@ -37,6 +37,16 @@ exports.findQuote = async (req, res) => {
     }
 }
 
-// exports.edit = (req, res) => {
-//     const 
-// }
+exports.updateQuote = async (req, res) => {
+    try{
+        const quoteFounded = await quote.findById(req.params.id);
+        Object.assign(quoteFounded, req.body);
+        quoteFounded.save();
+        res.send({data: quoteFounded});
+    }
+    catch {
+        return res.status(404).json({
+            error: 'There is not a quote with that ID'
+        })
+    }
+}
