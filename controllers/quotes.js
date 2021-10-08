@@ -11,3 +11,16 @@ exports.create = (req, res) => {
         res.json({data});
     })
 }
+
+exports.list = (req, res) => {
+    quote.find().exec((err, data) => {
+        if(err) {
+            return res.status(400).json({
+                error: 'Something went wrong.'
+            })
+        }
+        else {
+            res.json(data);
+        }
+    })
+}
